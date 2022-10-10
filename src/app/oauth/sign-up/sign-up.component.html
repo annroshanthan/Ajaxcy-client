@@ -1,0 +1,64 @@
+<section style="background-color: rgb(61, 58, 58);">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="mb-5">Register</h3>
+                        <form [formGroup]="signupForm" (ngSubmit)="signUp()">
+                            <div class="form-outline mb-4">
+                                <input type="email" class="form-control form-control-lg"
+                                    placeholder="supermarket@gmail.com" formControlName="email"
+                                     />
+                                     <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls.email.errors } " -->
+                                <!-- <label class="form-label" for="typeEmailX-2">User name</label> -->
+                               
+                                <!-- <span 
+                                class="text-danger" 
+                                *ngIf="signupForm.get('email').invalid && 
+                                    signupForm.get('email').hasError('required')"
+                            >*</span> -->
+
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
+                                    placeholder="Password" formControlName="password" />
+                                <!-- <label class="form-label" for="typePasswordX-2">Password</label> -->
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <div class="postion-relative">
+                                    <input formControlName="confirmpassword"
+                                        placeholder="Confirm Password" class="form-control form-control-lg"
+                                        autocomplete="new-password" />
+                                </div>
+                                </div>
+                            <!-- Checkbox -->
+                            <div class="d-flex justify-content-between">
+                                <div class="form-check d-flex justify-content-start mb-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                                    <label class="form-check-label" for="form1Example3"> Remember password </label>
+                                </div>
+                                <!-- <div>
+                                    <a routerLink="/user/signin" rel="noopener noreferrer">Login</a>
+                                </div> -->
+                            </div>
+                            <p class="text-center text-muted  mb-4">Have already an account? <a href="#!"
+                                class="fw-bold text-body"><u>Login here</u></a></p>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
+
+                            <!-- <hr class="my-4">
+
+                            <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #dd4b39;"
+                                type="submit"><i class="fab fa-google me-2 "></i>Register with google</button>
+                            <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
+                                type="submit"><i class="fab fa-facebook-f me-2"></i>Register with facebook</button> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
