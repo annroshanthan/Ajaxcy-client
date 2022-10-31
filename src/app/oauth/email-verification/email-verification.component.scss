@@ -1,0 +1,24 @@
+@media screen and (max-width:600px) {
+    h1 {
+        font-size: 32px !important;
+        line-height: 32px !important;
+    }
+}
+
+/* ANDROID CENTER FIX */
+div[style*="margin: 16px 0;"] {
+    margin: 0 !important;
+}
+
+.bgColor{
+background-color: #ffffff;
+}
+.Confirm{
+    font-size: 20px; 
+    font-family: Helvetica, Arial, sans-serif; 
+    color: #ffffff; text-decoration: none;  
+    padding: 15px 25px; 
+    border-radius: 2px; 
+    border: 1px solid #FFA73B; 
+    display: inline-block;
+}
