@@ -1,4 +1,5 @@
-<section style="background-color: rgb(61, 58, 58);">
+<!-- <app-user-header></app-user-header> -->
+<section style="background-color: #f1f5f8">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -9,18 +10,24 @@
                         <form [formGroup]="signupForm" (ngSubmit)="signUp()">
                             <div class="form-outline mb-4">
                                 <input type="email" class="form-control form-control-lg"
-                                    placeholder="supermarket@gmail.com" formControlName="email"
-                                     />
-                                     <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls.email.errors } " -->
+                                    placeholder="supermarket@gmail.com" formControlName="email" />
+                                <!-- [ngClass]="{'is-invalid':submitted && signupForm.controls.email.errors } " -->
                                 <!-- <label class="form-label" for="typeEmailX-2">User name</label> -->
-                               
-                                <!-- <span 
-                                class="text-danger" 
-                                *ngIf="signupForm.get('email').invalid && 
-                                    signupForm.get('email').hasError('required')"
-                            >*</span> -->
+
+                                <!-- <div *ngIf="email!.touched && email!.errors" class="invalid-feedback">
+                                    <div *ngIf="email!.errors['required']">Contact details is required</div>
+                                    <div *ngIf="email!.errors['email']">email details is required</div>
+
+                                </div> -->
+                                <!-- <div *ngIf="f['email'].touched" class="invalid-feedback">
+                                    <small class="text-danger" >
+                                        Name is required!
+                                    </small>
+                                    
+                                </div> -->
 
                             </div>
+                            <!-- <div *ngIf="Email.errors.required">Contact details is required</div> -->
 
                             <div class="form-outline mb-4">
                                 <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
@@ -30,11 +37,10 @@
 
                             <div class="form-outline mb-4">
                                 <div class="postion-relative">
-                                    <input formControlName="confirmpassword"
-                                        placeholder="Confirm Password" class="form-control form-control-lg"
-                                        autocomplete="new-password" />
+                                    <input formControlName="confirmpassword" placeholder="Confirm Password"
+                                        class="form-control form-control-lg" autocomplete="new-password" />
                                 </div>
-                                </div>
+                            </div>
                             <!-- Checkbox -->
                             <div class="d-flex justify-content-between">
                                 <div class="form-check d-flex justify-content-start mb-4">
@@ -45,8 +51,8 @@
                                     <a routerLink="/user/signin" rel="noopener noreferrer">Login</a>
                                 </div> -->
                             </div>
-                            <p class="text-center text-muted  mb-4">Have already an account? <a href="#!"
-                                class="fw-bold text-body"><u>Login here</u></a></p>
+                            <p class="text-center text-muted  mb-4">Have already an account? <a routerLinkActive="active" routerLink="/user/signin"
+                                    class="fw-bold text-body"><u>Login here</u></a></p>
                             <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
 
                             <!-- <hr class="my-4">
@@ -62,3 +68,4 @@
         </div>
     </div>
 </section>
+<!-- <app-user-footer></app-user-footer> -->

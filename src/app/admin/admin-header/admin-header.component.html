@@ -1,1 +1,37 @@
-<p>admin-header works!</p>
+<nav id="header" class="header fixed-top d-flex align-items-center sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- <a class="navbar-brand" >Admin</a> -->
+    <div class="d-flex align-items-center justify-content-between">
+        <a  class="navbar-brand logo d-flex align-items-center">
+            <img src="assets/img/logo.png" alt="">
+            <span class="d-none d-lg-block">Admin</span>
+        </a> 
+        <button class="d-flex align-items-center justify-content-between btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" data-cy="topNavToggleSideNav"
+    (click)="sidebarToggle()"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    </div>
+    
+    
+        <!-- <button class="d-flex align-items-center justify-content-between btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" data-cy="topNavToggleSideNav"
+    (click)="sidebarToggle()"
+    >
+    <span class="navbar-toggler-icon"></span>
+    </button> -->
+    <!-- (click)="toggleSideNav()"><fa-icon [icon]='["fas", "bars"]'></fa-icon> -->
+    <!-- Navbar Search-->
+    <!-- <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                   
+                </button>
+            </div>
+        </div>
+    </form> -->
+    <!-- Navbar-->
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <!-- <sb-top-nav-user></sb-top-nav-user> -->
+    </ul>
+</nav>

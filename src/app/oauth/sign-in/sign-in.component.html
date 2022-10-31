@@ -1,4 +1,5 @@
-<section style="background-color: rgb(61, 58, 58);">
+<!-- <app-user-header></app-user-header> -->
+<section style="background-color:#f1f5f8;">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -6,17 +7,33 @@
                     <div class="card-body p-5 text-center">
 
                         <h3 class="mb-5">Login</h3>
-
+                        <form [formGroup]="signinForm" (ngSubmit)="signIn()">
                         <div class="form-outline mb-4">
-                            <input type="email" id="typeEmailX-2" class="form-control form-control-lg"
-                                placeholder="User name" />
                             <label class="form-label" for="typeEmailX-2">Email</label>
-                        </div>
+                            <input type="email" id="typeEmailX-2" class="form-control form-control-lg"
+                                placeholder="User name" formControlName="email"/>
+                                <!-- <p *ngIf="email!.touched && email!.invalid" class="error">
+                                    <sup>*</sup>Please provide contact number
+                                  </p> -->
+                                  <div *ngIf="email!.touched && email!.invalid" class="text-danger">
+                                    <small *ngIf="email!.errors?.['required']" >Email is required</small>
+                                    <small *ngIf="email!.errors?.['email']" >Enter a valid email</small>
+                                  </div>
+                                    <!-- <div *ngIf="email!.touched" class="invalid-feedback">
+                                    <div *ngIf="email!.errors.required">Contact details is required</div>
+                                    <div *ngIf="email!.errors['email']">email details is required</div>
+
+                                </div> -->
+                        </div> 
 
                         <div class="form-outline mb-4">
-                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
-                                placeholder="Password" />
                             <label class="form-label" for="typePasswordX-2">Password</label>
+                            <input type="password" id="typePasswordX-2" class="form-control form-control-lg"
+                                placeholder="Password" formControlName="password"/>
+                                <div *ngIf="password!.touched && password!.invalid" class="text-danger">
+                                    <small *ngIf="password!.errors?.['required']" >password is required</small>
+                                    <small *ngIf="password!.errors?.['minLength']" >Enter a valid password</small>
+                                  </div>
                         </div>
 
                         <!-- Checkbox -->
@@ -30,18 +47,20 @@
                             </div>
                         </div>
 
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" [disabled]="signinForm.invalid">Login</button>
 
-                        <hr class="my-4">
+                        <!-- <hr class="my-4"> -->
 
-                        <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #dd4b39;"
+                        <!-- <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #dd4b39;"
                             type="submit"><i class="fab fa-google me-2 "></i> Login with google</button>
                         <button class="btn btn-lg btn-block btn-primary mb-2" style="background-color: #3b5998;"
-                            type="submit"><i class="fab fa-facebook-f me-2"></i>Login with facebook</button>
-
+                            type="submit"><i class="fab fa-facebook-f me-2"></i>Login with facebook</button> -->
+</form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<!-- <app-user-footer></app-user-footer> -->
+

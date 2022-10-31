@@ -1,4 +1,10 @@
 <app-admin-header></app-admin-header>
-<app-adminproduct></app-adminproduct>
+<!-- <app-adminproduct></app-adminproduct> -->
+<ngx-ui-loader 
+
+[text]="'Please wait...'"
+[fgsType]="'folding-cube'"
+></ngx-ui-loader>
+<app-admin-side-nav></app-admin-side-nav>
 <router-outlet></router-outlet>
 <app-admin-footer></app-admin-footer>
