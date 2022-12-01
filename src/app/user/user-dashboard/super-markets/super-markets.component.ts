@@ -31,9 +31,11 @@ export class SuperMarketsComponent implements OnInit {
     this._SupermarketService.getSuperMarket()
     .subscribe((data:Supermarket[])=>{
       this.supermarkets = data;
+      console.log({data});
+      
       this.ngxService.stop();
-    },(error:HttpErrorResponse)=>{
-      console.log(error);     
+    },(error)=>{
+      console.log('wwwww',error.message);     
     })  
   }
 

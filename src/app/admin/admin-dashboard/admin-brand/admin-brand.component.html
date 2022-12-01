@@ -1,0 +1,88 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+
+  <div class="row">
+    <div class="col-md-12">
+      
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h4><i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;Brands</h4>
+ <!-- Button trigger modal -->
+          <button  type="button" class="btn btn-secondary btn-lg mb-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-plus-lg"></i> Add Brand
+          </button>
+
+        </div>
+        </div>
+        <div class="card-body table-responsive d-flex justify-content-center">
+          <table class="table table-hover align-middle" style="width:90% ;">
+            <thead class="table-secondary text-center">
+              <tr>
+                <th>Name</th>
+                <th>Created At</th>
+                <th>Edit</th>
+                <th>Delete </th>
+               <!--  <th>Created Date</th>
+                <th>Action </th> -->
+              </tr>
+            </thead>
+            <tbody class="table-primary text-center">
+              <tr *ngFor="let brand of brands">
+                <td>{{brand.name}}</td>
+                <td>{{brand.createdAt | date}}</td>
+                <td class="text-primary" (click)="edit(brand._id)"><i class="bi bi-pen-fill" role="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
+                <td class="text-danger" (click)="delete(brand._id)"><i class="bi bi-trash3-fill" role="button"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+     
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 " id="staticBackdropLabel">Create Brand</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="close()" ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="brandForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="categoryName" class="form-label">Brand Name</label>
+            <input 
+            type="text" 
+            class="form-control" 
+            id="categoryName" 
+            formControlName="name"
+            [ngClass]="{
+              'is-invalid': f['name'].invalid && (f['name'].dirty || f['name'].touched),
+              'is-valid': f['name'].valid && (f['name'].dirty || f['name'].touched)
+            }"
+            >
+            
+            <!-- [ngClass]="{ 'is-invalid':f['name'].errors }" -->
+            <div *ngIf="(f['name'].dirty || f['name'].touched) && f['name'].errors" class="text-danger">
+              <small *ngIf="f['name'].errors['required']">Brand name is required</small>
+            </div>
+          </div>
+       
+       
+      <div class="modal-footer d-flex justify-content-between">
+        <button type="button" (click)="close()" class="btn btn-secondary" data-bs-dismiss="modal" #closed>Close</button>
+        <button type="submit" class="btn btn-primary" [disabled]="brandForm.invalid">{{isEdit? 'Update':'Create'}}</button>
+      </div>
+    </form>
+  </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+    </div>
+</main>

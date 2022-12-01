@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OauthService } from 'src/app/services/oauth.service';
+import { CartService } from 'src/app/services/cart.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,13 +11,17 @@ import Swal from 'sweetalert2';
 })
 export class UserHeaderComponent implements OnInit {
 isloggedIn:Boolean = false;
+cartCount:number = 0;
   constructor(
     public _authService:OauthService,
-    private _router:Router
+    private _router:Router,
+    private _cartService:CartService
   ) { }
 
   ngOnInit(): void {
-    // this.isloggedIn = this._authService.isLoggedin()
+   this._cartService.cart$.subscribe(cart =>{
+    this.cartCount = cart?.items.length ?? 0;
+    })
   }
 
   loggedOut(){

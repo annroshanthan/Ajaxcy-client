@@ -78,7 +78,14 @@ export class SuperMarketService {
       )
   }
 
-  errorHandler(error: any) {
+  addSuperMarket(body:Supermarket):Observable<Supermarket>{
+    return this.http.post<Supermarket>(`${this.URL}/supermarket/shop`,body)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
+
+  errorHandler(error: any){
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error
@@ -90,5 +97,6 @@ export class SuperMarketService {
     console.log(errorMessage);
     return throwError(errorMessage);
   }
+  
 
 }

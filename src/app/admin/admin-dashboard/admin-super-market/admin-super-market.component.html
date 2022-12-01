@@ -1,0 +1,200 @@
+<main id="main" class="main">
+    <div class="pagetitle">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <h4><i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;Supermarkets</h4>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-secondary btn-lg mb-2" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">
+                                <i class="bi bi-plus-lg"></i> Add Supermarket
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="card-body table-responsive d-flex justify-content-center">
+                        <table class="table table-hover align-middle" style="width:90% ;">
+                            <thead class="table-secondary text-center">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>City</th>
+                                    <th>Description</th>
+                                    <th>About</th>
+                                    <th>Quote</th>
+                                    <th>Video</th>
+                                    <th>Created At</th>
+                                    <th>Edit</th>
+                                    <th>Delete </th>
+                                    <!--  <th>Created Date</th>
+                <th>Action </th> -->
+                                </tr>
+                            </thead>
+                            <tbody class="table-primary text-center">
+                                <!-- (click)="edit(superMarket._id)" -->
+                                <tr *ngFor="let superMarket of SuperMarkets; let i = index">
+                                    <td>{{i+1}}</td>
+                                    <!-- <td><img src={{superMarket.images.imageUrl}} class="image-fluid" width="25px"
+                                            height="250px" alt=""> </td> -->
+                                    <td style="height: 20px; overflow:hidden">{{superMarket.name}}</td>
+                                    <td style="height: 20px; overflow:hidden">{{superMarket.city}}</td>
+                                    <td style="height: 20px; overflow:hidden">{{superMarket.description}}</td>
+                                    <td style="height: 20px; overflow:hidden">{{superMarket.about}}</td>
+                                    <td style="height: 20px; overflow:hidden">{{superMarket.quote}}</td>
+                                    <td style="height: 20px; overflow:hidden"><video src={{superMarket?.video}}></video>
+                                    </td>
+                                    <td style="height: 20px; overflow:hidden">{{superMarket.createdAt | date}}</td>
+                                    <td class="text-primary"><i class="bi bi-pen-fill" role="button"
+                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i></td>
+                                    <td class="text-danger"><i class="bi bi-trash3-fill" role="button"></i></td>
+                                    <!-- (click)="delete(superMarket._id)" -->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"
+                    style="--bs-modal-width: 100% !important;--bs-modal-padding: 2rem;">
+                    <div class="modal-dialog m-5">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h1 class="modal-title fs-5 " id="staticBackdropLabel">Create Supermarket</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                                    (click)="close()"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form [formGroup]="superMarketForm" (ngSubmit)="onSubmit()">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="upload text-center mb-3">
+                                                <img src="../../../../assets/ajaxcy.png" *ngIf="!imageSrc"
+                                                    class="image-fluid" alt="">
+                                                <img [src]="imageSrc" *ngIf="imageSrc" class="image-fluid">
+                                                <div class="round">
+                                                    <input type="file" (change)="onFileChange($event)"
+                                                    formControlName="file">
+                                                    <i class="bi bi-cloud-arrow-up-fill cloud-arrow-collor"></i>
+                                                    <div *ngIf="(f['file'].dirty || f['file'].touched) && f['file'].errors"
+                                                        class="text-danger">
+                                                        <small *ngIf="f['file'].errors['required']">Image is
+                                                            required</small>
+                                                    </div>
+                                                    <!-- <img [src]="imageSrc" *ngIf="imageSrc" style="height: 300px; width:500px"> -->
+                                                    <!-- <i class = "fa fa-camera" style = "color: #fff;"></i> -->
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="formGroup mb-3">
+                                                <label for="categoryName" class="form-label">Supermarket Name</label>
+                                                <input type="text" class="form-control" id="categoryName"
+                                                    formControlName="name" [ngClass]="{
+                                                        'is-invalid': f['name'].invalid && (f['name'].dirty || f['name'].touched),
+                                                        'is-valid': f['name'].valid && (f['name'].dirty || f['name'].touched)
+                                                                }">
+                                                <div *ngIf="(f['name'].dirty || f['name'].touched) && f['name'].errors"
+                                                    class="text-danger">
+                                                    <small *ngIf="f['name'].errors['required']">Name is
+                                                        required</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="formGroup mb-3">
+                                                <label for="description" class="form-label">Description</label>
+                                                <input type="text" class="form-control" id="description"
+                                                    formControlName="description" [ngClass]="{
+                                                        'is-invalid': f['description'].invalid && (f['description'].dirty || f['description'].touched),
+                                                        'is-valid': f['description'].valid && (f['description'].dirty || f['description'].touched)
+                                                                }">
+                                                <div *ngIf="(f['description'].dirty || f['description'].touched) && f['description'].errors"
+                                                    class="text-danger">
+                                                    <small *ngIf="f['description'].errors['required']">Description is
+                                                        required</small>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <div class="formGroup mb-3">
+                                                <label for="city" class="form-label">City</label>
+                                                <input type="text" class="form-control" id="city" formControlName="city"
+                                                    [ngClass]="{
+                                                        'is-invalid': f['city'].invalid && (f['city'].dirty || f['city'].touched),
+                                                        'is-valid': f['city'].valid && (f['city'].dirty || f['city'].touched)
+                                                                }">
+                                                <div *ngIf="(f['city'].dirty || f['city'].touched) && f['city'].errors"
+                                                    class="text-danger">
+                                                    <small *ngIf="f['city'].errors['required']">City is
+                                                        required</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="formGroup mb-3">
+                                                <label for="about" class="form-label">About</label>
+                                                <input type="text" class="form-control" id="about"
+                                                    formControlName="about" [ngClass]="{
+                                                        'is-invalid': f['about'].invalid && (f['about'].dirty || f['about'].touched),
+                                                        'is-valid': f['about'].valid && (f['about'].dirty || f['about'].touched)
+                                                                }">
+                                                <div *ngIf="(f['about'].dirty || f['about'].touched) && f['about'].errors"
+                                                    class="text-danger">
+                                                    <small *ngIf="f['about'].errors['required']">Description is
+                                                        required</small>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="formGroup mb-3">
+                                                <label for="quote" class="form-label">Quote</label>
+                                                <input type="text" class="form-control" id="quote"
+                                                    formControlName="quote" [ngClass]="{
+                                                        'is-invalid': f['quote'].invalid && (f['quote'].dirty || f['quote'].touched),
+                                                        'is-valid': f['quote'].valid && (f['quote'].dirty || f['quote'].touched)
+                                                                }">
+                                                <div *ngIf="(f['quote'].dirty || f['quote'].touched) && f['quote'].errors"
+                                                    class="text-danger">
+                                                    <small *ngIf="f['quote'].errors['required']">Quote is
+                                                        required</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                    <div class="modal-footer d-flex justify-content-between">
+                                        <button type="button" (click)="close()" class="btn btn-secondary"
+                                            data-bs-dismiss="modal" #closed>Close</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            [disabled]="superMarketForm.invalid">{{isEdit? 'Update':'Create'}}</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</main>
